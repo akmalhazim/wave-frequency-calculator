@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wave frequency calculator</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div style="padding: 2rem 0;">
+      <div class="container">
+        <blockquote class="blockquote text-center header-wrapper">
+          <p class="mb-0">Wave frequency calculator</p>
+          <footer class="blockquote-footer">
+            Calculate <cite title="frequency">frequency (f)</cite> based on
+            <cite title="wavespeed">velocity (m/s)</cite> and
+            <cite title="wavelength">wavelength (m)</cite>
+          </footer>
+        </blockquote>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            {% if frequency != None %}
+            <div class="mb-4 alert alert-success" role="alert">
+              {{ frequency }} Hz
+            </div>
+            {%endif%}
+            <form action="/" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="velocity">Velocity (m/s)</label>
+                <input
+                  type="number"
+                  step=".01"
+                  class="form-control"
+                  id="velocity"
+                  name="velocity"
+                  value="{{ velocity }}"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="wavelength">Wavelength (m)</label>
+                <input
+                  type="number"
+                  step=".01"
+                  class="form-control"
+                  id="wavelength"
+                  name="wavelength"
+                  value="{{ wavelength }}"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                Calculate
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
